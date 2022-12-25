@@ -87,15 +87,16 @@
   <script>
     let scanButton = document.getElementById("button");
     scanButton.addEventListener("click", async () => {
-  log("User clicked scan button");
+        alert("diklik")
+  console.log("User clicked scan button");
 
   try {
     const ndef = new NDEFReader();
     await ndef.scan();
-    log("> Scan started");
+    console.log("> Scan started");
 
     ndef.addEventListener("readingerror", () => {
-      log("Argh! Cannot read data from the NFC tag. Try another one?");
+      console.log("Argh! Cannot read data from the NFC tag. Try another one?");
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
@@ -105,11 +106,11 @@
         else{
             alert("berhasil")
         }
-      log(`> Serial Number: ${serialNumber}`);
-      log(`> Records: (${message.records.length})`);
+      console.log(`> Serial Number: ${serialNumber}`);
+      console.log(`> Records: (${message.records.length})`);
     });
   } catch (error) {
-    log("Argh! " + error);
+    console.log("Argh! " + error);
   }
 });
   </script>
